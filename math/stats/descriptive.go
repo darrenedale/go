@@ -39,7 +39,7 @@ func Product(data []float64) float64 {
 	return prod
 }
 
-func Max(values ...int) (int, error) {
+func Max(values ...float64) (float64, error) {
 	if 0 == len(values) {
 		return 0, errors.New("no values to compare")
 	}
@@ -55,7 +55,39 @@ func Max(values ...int) (int, error) {
 	return a, nil
 }
 
-func Min(values ...int) (int, error) {
+func MaxInt(values ...int) (int, error) {
+	if 0 == len(values) {
+		return 0, errors.New("no values to compare")
+	}
+
+	a := values[0]
+
+	for _, b := range values[1:] {
+		if b > a {
+			a = b
+		}
+	}
+
+	return a, nil
+}
+
+func Min(values ...float64) (float64, error) {
+	if 0 == len(values) {
+		return 0, errors.New("no values to compare")
+	}
+
+	a := values[0]
+
+	for _, b := range values[1:] {
+		if b < a {
+			a = b
+		}
+	}
+
+	return a, nil
+}
+
+func MinInt(values ...int) (int, error) {
 	if 0 == len(values) {
 		return 0, errors.New("no values to compare")
 	}

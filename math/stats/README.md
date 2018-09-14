@@ -5,8 +5,10 @@ The _math/stats_ package contains statistical functions. The following are curre
 ## Descriptive statistics
 - `Sum([]float64) float64` Calculate the sum of a set of values
 - `Product([]float64) float64` Calculate the product of a set of values
-- `Min(values ... int) (int, float64)` Calculate the minimum of a set of values
-- `Max(values ... int) (int, float64)` Calculate the maximum of a set of values
+- `Min(values ... float64) (float64, error)` Calculate the minimum of a set of values
+- `Max(values ... float64) (float64, error)` Calculate the maximum of a set of values
+- `MinInt(values ... int) (int, error)` Calculate the minimum of a set of values
+- `MaxInt(values ... int) (int, error)` Calculate the maximum of a set of values
 - `Average([]float64) (float64, error)` Synonym for ArithmeticMean.
 - `ArithmeticMean([]float64) (float64, error)` Calculate the arithmetic mean of a set of values
 - `HarmonicMean([]float64) (float64, error)` Calculate the harmonic mean of a set of values
