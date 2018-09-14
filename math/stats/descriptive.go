@@ -39,20 +39,36 @@ func Product(data []float64) float64 {
 	return prod
 }
 
-func Max(a, b int) int {
-	if a > b {
-		return a
+func Max(values ...int) (int, error) {
+	if 0 == len(values) {
+		return 0, errors.New("no values to compare")
 	}
 
-	return b
+	a := values[0]
+
+	for _, b := range values[1:] {
+		if b > a {
+			a = b
+		}
+	}
+
+	return a, nil
 }
 
-func Min(a, b int) int {
-	if a < b {
-		return a
+func Min(values ...int) (int, error) {
+	if 0 == len(values) {
+		return 0, errors.New("no values to compare")
 	}
 
-	return b
+	a := values[0]
+
+	for _, b := range values[1:] {
+		if b < a {
+			a = b
+		}
+	}
+
+	return a, nil
 }
 
 func Mean(data []float64, meanNumber int) (float64, error) {
