@@ -3,6 +3,7 @@ package stats
 import (
 	"errors"
 	"math"
+	"sort"
 )
 
 // convenience constants for meanNumber in Mean()
@@ -137,4 +138,22 @@ func QuadraticMean(data []float64) (float64, error) {
 
 func GeometricMean(data []float64) (float64, error) {
 	return Mean(data, GeometricMeanNumber)
+}
+
+func Median(data []float64) (float64, error) {
+	n := len(data)
+
+	if 0 == n {
+		return 0.0, errors.New("empty array of data")
+	}
+	
+	sortedData := data
+	sort.Float64s(sortedData)
+
+	if 0 == (n % 2) {
+		middleIndex := (n / 2)
+		return Mean(sortedData[middleIndex - 1:middleIndex +1], ArithmeticMeanNumber)
+	}
+
+	return sortedData[(n - 1) / 2], nil
 }
